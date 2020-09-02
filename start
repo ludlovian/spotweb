@@ -1,0 +1,12 @@
+#!/bin/bash
+DIR="${0%/*}"
+ENV="$DIR/env"
+PYTHON="$ENV/bin/python"
+SRC="$DIR/src/spotweb.py"
+
+die() { echo "$*" >&2; exit 1; }
+
+[[ -e $PYTHON ]] || die "Cannot find $PYTHON"
+[[ -e $SRC ]] || die "Cannot find $SRC"
+
+exec "$PYTHON" "$SRC" "$@"
